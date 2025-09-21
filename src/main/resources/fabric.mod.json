@@ -1,0 +1,34 @@
+{
+	"schemaVersion": 1,
+	"id": "shiny-horses-reborn",
+	"version": "${version}",
+	"name": "Shiny Horses Reborn",
+	"description": "Enchantable Horse Armor",
+	"authors": [
+		"VesMaybeVesper"
+	],
+	"contact": {
+		"homepage": "https://modrinth.com/project/shiny-horses-reborn",
+		"sources": ""
+	},
+	"license": "MIT",
+	"icon": "assets/shiny-horses-reborn/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"vesper.shinyhorses.ShinyHorsesReborn"
+		]
+	},
+	"mixins": [
+		"shiny-horses-reborn.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.17.2",
+		"minecraft": ">=1.21.1",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}

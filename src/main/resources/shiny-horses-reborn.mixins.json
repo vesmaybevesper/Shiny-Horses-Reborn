@@ -1,0 +1,20 @@
+{
+  "required": true,
+  "package": "vesper.shinyhorses.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "AnimalArmorItemMixin",
+    "EnchantHelperMixin",
+    "EnchantTargetMixin",
+    "ItemMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
+  },
+  "client": [
+    "HorseArmorFeatureRendererMixin"
+  ]
+}
