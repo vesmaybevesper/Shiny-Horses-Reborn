@@ -22,9 +22,7 @@ public class FabricAbstractionsMixin {
                     enchantmentId.contains("blast_protection") ||
                     enchantmentId.contains("projectile_protection") ||
                     enchantmentId.contains("thorns") ||
-                    enchantmentId.contains("frost_walker") ||
-                    enchantmentId.contains("feather_falling") ||
-                    enchantmentId.contains("soul_speed");
+                    enchantmentId.contains("feather_falling");
 
             cir.setReturnValue(isAllowedEnchantment);
         }
