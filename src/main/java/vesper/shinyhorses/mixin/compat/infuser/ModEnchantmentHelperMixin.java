@@ -25,8 +25,8 @@ public class ModEnchantmentHelperMixin {
     @Inject(method = "getEnchantmentsForItem", at = @At("HEAD"), cancellable = true)
     private static void horseArmorEnchants(RegistryAccess registryAccess, net.minecraft.world.item.ItemStack itemStack, net.minecraft.tags.TagKey<net.minecraft.world.item.enchantment.Enchantment> availableEnchantments, boolean primaryOnly, CallbackInfoReturnable<Collection<Holder<net.minecraft.world.item.enchantment.Enchantment>>> cir){
         if (itemStack.getItem() instanceof AnimalArmorItem){
-            var registry = registryAccess.registryOrThrow(Registries.ENCHANTMENT);
-            var tags = registry.getTag(availableEnchantments);
+            var registry = registryAccess.lookupOrThrow(Registries.ENCHANTMENT);
+            var tags = registry.get(availableEnchantments);
             if (tags.isPresent()){
                 var result = new HashSet<Holder<Enchantment>>();
 
