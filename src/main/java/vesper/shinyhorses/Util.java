@@ -1,42 +1,42 @@
 package vesper.shinyhorses;
 
-import net.minecraft.client.render.RenderLayer;
-import net.minecraft.client.render.VertexConsumer;
-import net.minecraft.client.render.VertexConsumerProvider;
-import net.minecraft.client.render.VertexConsumers;
-import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.passive.HorseEntity;
-import net.minecraft.item.AnimalArmorItem;
-import net.minecraft.item.ItemStack;
-import net.minecraft.registry.entry.RegistryEntry;
-import net.minecraft.util.Identifier;
+import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.blaze3d.vertex.VertexConsumer;
+import com.mojang.blaze3d.vertex.VertexMultiConsumer;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.core.Holder;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.animal.horse.Horse;
+import net.minecraft.world.item.AnimalArmorItem;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 public class Util {
 
-    public static VertexConsumer renderHorseArmorGlintHook(VertexConsumer old, MatrixStack matrixStackIn, VertexConsumerProvider bufferIn, int packedLightIn, HorseEntity horse,
+    public static VertexConsumer renderHorseArmorGlintHook(VertexConsumer old, PoseStack matrixStackIn, MultiBufferSource bufferIn, int packedLightIn, Horse horse,
                                                            float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
-        ItemStack stack = horse.getBodyArmor();
+        ItemStack stack = horse.getBodyArmorItem();
         AnimalArmorItem horseArmorItem = (AnimalArmorItem) stack.getItem();
-        boolean glint = horseArmorItem.hasGlint(stack);
+        boolean glint = horseArmorItem.isFoil(stack);
         if (glint) {
-            Identifier texture = horseArmorItem.getEntityTexture();
-            return VertexConsumers.union(
-                    bufferIn.getBuffer(RenderLayer.getEntityGlint()),
-                    bufferIn.getBuffer(RenderLayer.getEntityCutoutNoCull(texture))
+            ResourceLocation texture = horseArmorItem.getTexture();
+            return VertexMultiConsumer.create(
+                    bufferIn.getBuffer(RenderType.entityGlint()),
+                    bufferIn.getBuffer(RenderType.entityCutoutNoCull(texture))
             );
         }
         return old;
     }
 
-    public static void checkHorseHook(RegistryEntry<Enchantment> enchantmentIn, LivingEntity entityIn, CallbackInfoReturnable<Integer> cir) {
-        if (entityIn instanceof HorseEntity) {
-            ItemStack armor = ((HorseEntity) entityIn).getBodyArmor();
+    public static void checkHorseHook(Holder<Enchantment> enchantmentIn, LivingEntity entityIn, CallbackInfoReturnable<Integer> cir) {
+        if (entityIn instanceof Horse) {
+            ItemStack armor = ((Horse) entityIn).getBodyArmorItem();
             if (armor.getItem() instanceof AnimalArmorItem) {
-                int level = EnchantmentHelper.getLevel(enchantmentIn, armor);
+                int level = EnchantmentHelper.getItemEnchantmentLevel(enchantmentIn, armor);
                 cir.setReturnValue(level);
             }
         }
