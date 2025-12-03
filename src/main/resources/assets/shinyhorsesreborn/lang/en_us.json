@@ -1,0 +1,13 @@
+{
+  "itemGroup.shinyhorsesreborn": "Example Mod Tab",
+  "block.shinyhorsesreborn.example_block": "Example Block",
+  "item.shinyhorsesreborn.example_item": "Example Item",
+
+  "shinyhorsesreborn.configuration.title": "Shiny Horses Reborn Configs",
+  "shinyhorsesreborn.configuration.section.shinyhorsesreborn.common.toml": "Shiny Horses Reborn Configs",
+  "shinyhorsesreborn.configuration.section.shinyhorsesreborn.common.toml.title": "Shiny Horses Reborn Configs",
+  "shinyhorsesreborn.configuration.items": "Item List",
+  "shinyhorsesreborn.configuration.logDirtBlock": "Log Dirt Block",
+  "shinyhorsesreborn.configuration.magicNumberIntroduction": "Magic Number Text",
+  "shinyhorsesreborn.configuration.magicNumber": "Magic Number"
+}

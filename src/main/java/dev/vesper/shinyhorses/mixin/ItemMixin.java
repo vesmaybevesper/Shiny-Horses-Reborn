@@ -1,4 +1,4 @@
-package vesper.shinyhorses.mixin;
+package dev.vesper.shinyhorses.mixin;
 
 import net.minecraft.world.item.AnimalArmorItem;
 import net.minecraft.world.item.Item;
@@ -10,6 +10,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(Item.class)
 public abstract class ItemMixin {
+
     @Inject(method ={"getEnchantmentValue"} , at = {@At("HEAD")}, cancellable = true)
     private void horseArmorEnchantability(CallbackInfoReturnable<Integer> cir){
         if ((Object) this instanceof AnimalArmorItem horseArmor){

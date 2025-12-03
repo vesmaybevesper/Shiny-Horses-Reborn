@@ -1,13 +1,13 @@
 {
   "required": true,
-  "package": "vesper.shinyhorses.mixin",
+  "package": "dev.vesper.shinyhorses.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
     "AnimalArmorItemMixin",
-    "EnchantHelperMixin",
+    "EnchantmentHelperMixin",
     "EnchantTargetMixin",
     "ItemMixin",
-    "compat.infuser.FabricAbstractionsMixin",
+    "compat.infuser.NeoForgeAbstractionsMixin",
     "compat.infuser.ModEnchantmentHelperMixin"
   ],
   "injectors": {
@@ -17,6 +17,6 @@
     "requireAnnotations": true
   },
   "client": [
-    "HorseArmorFeatureRendererMixin"
+    "HorseArmorLayerMixin"
   ]
 }
