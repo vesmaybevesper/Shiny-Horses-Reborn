@@ -7,7 +7,8 @@
     "EnchantHelperMixin",
     "EnchantTargetMixin",
     "ItemMixin",
-    "compat.infuser.FabricAbstractionsMixin"
+    "compat.infuser.FabricAbstractionsMixin",
+    "compat.infuser.ModEnchantmentHelperMixin"
   ],
   "injectors": {
     "defaultRequire": 1
