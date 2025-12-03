@@ -6,7 +6,8 @@
     "AnimalArmorItemMixin",
     "EnchantHelperMixin",
     "EnchantTargetMixin",
-    "ItemMixin"
+    "ItemMixin",
+    "compat.infuser.FabricAbstractionsMixin"
   ],
   "injectors": {
     "defaultRequire": 1

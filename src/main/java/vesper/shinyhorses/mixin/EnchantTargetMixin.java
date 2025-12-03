@@ -27,4 +27,24 @@ public abstract class EnchantTargetMixin {
             cir.setReturnValue(isAllowedEnchantment);
         }
     }
+
+// Attempt at getting Advanced Infuser working, may not be needed. But may also enable using books and anvils.
+    @Inject(method = "isAcceptableItem", at = @At("HEAD"), cancellable = true)
+    private void acceptableHorseArmor(ItemStack stack, CallbackInfoReturnable<Boolean> cir){
+        Enchantment enchantment = (Enchantment) (Object) this;
+
+        if (stack.getItem() instanceof AnimalArmorItem){
+            String enchantmentId = enchantment.toString().toLowerCase();
+            boolean isAllowedEnchantment = enchantmentId.contains("protection") ||
+                    enchantmentId.contains("fire_protection") ||
+                    enchantmentId.contains("blast_protection") ||
+                    enchantmentId.contains("projectile_protection") ||
+                    enchantmentId.contains("thorns") ||
+                    enchantmentId.contains("frost_walker") ||
+                    enchantmentId.contains("feather_falling") ||
+                    enchantmentId.contains("soul_speed");
+
+            cir.setReturnValue(isAllowedEnchantment);
+        }
+    }
 }
