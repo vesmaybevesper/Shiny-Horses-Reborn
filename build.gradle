@@ -33,7 +33,7 @@ dependencies {
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
     modCompileOnly("maven.modrinth:enchanting-infuser:${project.enchanting_infuser}")
     modCompileOnly("maven.modrinth:puzzles-lib:${project.puzzles_lib}")
-
+	modCompileOnly("maven.modrinth:enchancement:${project.enchancement}")
 }
 
 processResources {

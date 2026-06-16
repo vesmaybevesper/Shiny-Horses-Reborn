@@ -1,5 +1,6 @@
 package vesper.shinyhorses.mixin;
 
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.world.item.AnimalArmorItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
